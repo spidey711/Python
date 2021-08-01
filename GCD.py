@@ -9,7 +9,7 @@ def GCD(num1, num2):
             list1.append(x)
         else:
             pass
-    for y in range(1, num1+1):
+    for y in range(1, num2+1):
         if num2 % y == 0:
             list2.append(y)
         else:
