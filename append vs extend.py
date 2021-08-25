@@ -2,7 +2,7 @@
 
 # Append (allows to add one more element)
 li = [1,2,3,4]
-li.append([1,2,3])
+li.append(9)
 print(li)
 # Output : [1,2,3,4,9]
 # Note: the element in append() method can be an iterable too but then it will add the entire iterable as one element
