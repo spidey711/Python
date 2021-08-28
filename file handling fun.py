@@ -7,26 +7,26 @@ def method_read_file():
 def EXIT():
     print("Okay, exiting program now...")
     exit()
-try:
-    mode = str(input("Enter mode: "))
-    path = str(input("Enter path: "))
-    filename = open(path, mode)
-    if filename.writable() == True:
-        user_text = str(input("Enter some text: "))
-        filename.write(user_text)
-        print("File has been edited")
-    elif filename.writable() == False:
-        print("File cannot be edited")
-        proceed = str(input("Do you want to read the file? Y or N ")).lower()
-        if proceed == 'y':
+mode = str(input("Enter mode: "))
+path = str(input("Enter path: "))
+with open(path, mode) as filename:
+    try:
+        if filename.writable() == True:
+            user_text = str(input("Enter some text: "))
+            filename.write(user_text)
+            print("File has been edited")
+        elif filename.writable() == False:
+            print("File cannot be edited")
+            proceed = str(input("Do you want to read the file? Y or N ")).lower()
+            if proceed == 'y':
+                method_read_file()
+            elif proceed == "n":
+                EXIT()
+            else:
+                print("Please enter a valid option")
+        elif filename.readable() == True:
             method_read_file()
-        elif proceed == "n":
-            EXIT()
         else:
-            print("Please enter a valid option")
-    elif filename.readable() == True:
-        method_read_file()
-    else:
-        print("File cannot be read")
-except ValueError or FileNotFoundError:
-    print("Please enter the name of an existing file and give a valid mode")
+            print("File cannot be read")
+    except ValueError or FileNotFoundError:
+        print("Please enter the name of an existing file and give a valid mode")
